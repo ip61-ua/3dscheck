@@ -150,7 +150,7 @@ ifneq ($(ROMFS),)
 	export _3DSXFLAGS += --romfs=$(CURDIR)/$(ROMFS)
 endif
 
-.PHONY: all clean
+.PHONY: all clean .clangd
 
 #---------------------------------------------------------------------------------
 all:
@@ -226,3 +226,29 @@ endef
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------
+
+CLANGD = .clangd
+
+INCLUDE_PATHS = \
+	"-I$(shell pwd)/include" \
+	"-I/opt/devkitpro/libctru/include" \
+	"-I/opt/devkitpro/devkitARM/arm-none-eabi/include" \
+	"-I/opt/devkitpro/devkitARM/arm-none-eabi/3ds_rules" \
+	"-I/opt/devkitpro/libctru/include/3ds/services" \
+	"-lcitro2d" \
+	"-lcitro3d" \
+	"-lctru" \
+	"-lm"
+
+.clangd : 
+	@echo "$(CLANGD)"
+	@echo "CompileFlags:" > $(CLANGD)
+	@echo "    Remove:" >> $(CLANGD)
+	@echo "        - \"-mword-allocations\"" >> $(CLANGD)
+	@echo "        - \"-mword-relocations\"" >> $(CLANGD)
+	@echo "        - \"-fno-diagnostics-show-caret\"" >> $(CLANGD)
+	@echo "    Add:" >> $(CLANGD)
+	@echo "        - --target=arm-none-eabi" >> $(CLANGD)
+	@for entry_include in $(INCLUDE_PATHS); do \
+		echo "        - $$entry_include" >> $(CLANGD); \
+	done
