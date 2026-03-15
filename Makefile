@@ -185,7 +185,7 @@ else
 $(OUTPUT).cia: $(OUTPUT).elf
 	@bannertool makebanner -i $(TOPDIR)/$(BANNER_IMAGE) -a $(TOPDIR)/$(BANNER_AUDIO) -o banner.bnr
 	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i $(TOPDIR)/$(ICON) -o icon.icn -f $(ICON_FLAGS)
-	@makerom -f cia -o $(TOPDIR)/$@ -elf $< -rsf "$(RSF_PATH)" -target t -exefslogo -icon icon.icn -banner banner.bnr
+	@makerom -f cia -o $@ -elf $< -rsf "$(TOPDIR)/$(RSF_PATH)" -target t -exefslogo -icon icon.icn -banner banner.bnr
 
 #---------------------------------------------------------------------------------
 # main targets
