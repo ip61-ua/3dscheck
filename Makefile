@@ -47,10 +47,11 @@ APP_DESCRIPTION  := A simple program for testing basic 3DS functions.
 # CIA
 BANNER_AUDIO	:=	res/banner.wav
 BANNER_IMAGE	:=	res/banner.png
-RSF_PATH	:=	res/app.rsf
+#RSF_PATH	:=	res/app.rsf
 UNIQUE_ID	:=	0x16101
 PRODUCT_CODE	:=	CTR-G-3DSC
 ICON_FLAGS	:=	nosavebackups,visible
+ICON		:=	res/icon.png
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
