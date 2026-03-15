@@ -44,6 +44,14 @@ APP_AUTHOR       := okawaffles
 APP_TITLE        := 3DSCheck
 APP_DESCRIPTION  := A simple program for testing basic 3DS functions.
 
+# CIA
+BANNER_AUDIO	:=	res/banner.wav
+BANNER_IMAGE	:=	res/banner.png
+RSF_PATH	:=	res/app.rsf
+LOGO		:=	res/logo.lz11
+UNIQUE_ID	:=	0x16101
+PRODUCT_CODE	:=	CTR-G-3DSC
+ICON_FLAGS	:=	nosavebackups,visible
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
