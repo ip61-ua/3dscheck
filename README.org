@@ -3,6 +3,6 @@
 * Acknowledgements
 
 + Audio banner: https://pixabay.com/sound-effects/musical-funny-cartoon-sound-4-464864/
-+ Image banner: https://github.com/joel16/3DSident
++ Image banner & app.rsf: https://github.com/joel16/3DSident
 + Forked from: https://github.com/okawaffles/3dscheck
 

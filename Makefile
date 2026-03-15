@@ -47,7 +47,7 @@ APP_DESCRIPTION  := A simple program for testing basic 3DS functions.
 # CIA
 BANNER_AUDIO	:=	res/banner.wav
 BANNER_IMAGE	:=	res/banner.png
-#RSF_PATH	:=	res/app.rsf
+RSF_PATH	:=	res/app.rsf
 UNIQUE_ID	:=	0x16101
 PRODUCT_CODE	:=	CTR-G-3DSC
 ICON_FLAGS	:=	nosavebackups,visible
@@ -185,7 +185,7 @@ else
 $(OUTPUT).cia: $(OUTPUT).elf
 	@bannertool makebanner -i $(TOPDIR)/$(BANNER_IMAGE) -a $(TOPDIR)/$(BANNER_AUDIO) -o banner.bnr
 	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i $(TOPDIR)/$(ICON) -o icon.icn -f $(ICON_FLAGS)
-	@makerom -f cia -o $(TOPDIR)/$@ -elf $< -target t -exefslogo -icon icon.icn -banner banner.bnr
+	@makerom -f cia -o $(TOPDIR)/$@ -elf $< -rsf "$(RSF_PATH)" -target t -exefslogo -icon icon.icn -banner banner.bnr
 
 #---------------------------------------------------------------------------------
 # main targets
