@@ -158,7 +158,12 @@ ifneq ($(ROMFS),)
 	export _3DSXFLAGS += --romfs=$(CURDIR)/$(ROMFS)
 endif
 
-.PHONY: all clean .clangd
+.PHONY: all clean .clangd cia
+
+#---------------------------------------------------------------------------------
+cia:
+	@mkdir -p $(BUILD) $(GFXBUILD)
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile $(OUTPUT).cia
 
 #---------------------------------------------------------------------------------
 all:
@@ -173,6 +178,14 @@ clean:
 
 #---------------------------------------------------------------------------------
 else
+
+#---------------------------------------------------------------------------------
+# compile cia
+#---------------------------------------------------------------------------------
+$(OUTPUT).cia: $(OUTPUT).elf
+	@bannertool makebanner -i $(TOPDIR)/$(BANNER_IMAGE) -a $(TOPDIR)/$(BANNER_AUDIO) -o banner.bnr
+	@bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i $(TOPDIR)/$(ICON) -o icon.icn -f $(ICON_FLAGS)
+	@makerom -f cia -o $(TOPDIR)/$@ -elf $< -target t -exefslogo -icon icon.icn -banner banner.bnr
 
 #---------------------------------------------------------------------------------
 # main targets
