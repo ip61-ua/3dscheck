@@ -1,9 +1,12 @@
-/3DSCheck.3dsx
-/3DSCheck.smdh
-/3DSCheck.elf
+*.3dsx
+*.smdh
+*.elf
+*.cia
 /makelinkB.cmd
 /makelinkO.cmd
 /makelink.cmd
 /build/
 /.vscode/
 .clangd
+
+*.xcf
